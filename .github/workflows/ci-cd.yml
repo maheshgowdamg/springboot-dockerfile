@@ -1,4 +1,3 @@
-
 name: Build and Deploy
 
 on:
@@ -25,6 +24,11 @@ jobs:
     runs-on: ubuntu-latest
     needs: Checkout
     steps:
+    - name: Checkout Spring Boot code
+      uses: actions/checkout@v4
+      with:
+        repository: maheshgowdamg/springboot-dockerfile
+        path: springboot-dockerfile
     - name: Build with Maven
       run: |
         cd springboot-dockerfile
@@ -72,7 +76,6 @@ jobs:
     - name: Update Helm chart image tag
       run: |
         sed -i "s/tag: .*/tag: ${{ github.sha }}/" helm-repo/mychart/values.yaml
-
   commitandpush:
     runs-on: ubuntu-latest
     needs: Updateimagetag
