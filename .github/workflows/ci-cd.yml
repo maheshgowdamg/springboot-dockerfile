@@ -52,11 +52,14 @@ jobs:
     runs-on: ubuntu-latest
     needs: dockerloginaction
     steps:
-    - name: Build and push Docker image
-      uses: docker/build-push-action@v5
+    - name: Checkout Spring Boot code
+      uses: actions/checkout@v4
       with:
         repository: maheshgowdamg/springboot-dockerfile
         path: springboot-dockerfile
+    - name: Build and push Docker image
+      uses: docker/build-push-action@v5
+      with:
         context: ./springboot-dockerfile
         file: ./springboot-dockerfile/Dockerfile
         push: true
