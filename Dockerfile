@@ -1,14 +1,12 @@
-# Use lightweight JRE 17
-FROM eclipse-temurin:17-jre-alpine
+FROM eclipse-temurin:17-jre
 
-# Set working directory
 WORKDIR /app
 
-# Copy the Spring Boot JAR
-COPY target/Employee-Index-0.0.1-SNAPSHOT.jar app.jar
+# ✅ Copy your Employee Index JAR
+ADD ./target/employee-index.jar /app/employee-index.jar
 
-# Expose application port
-EXPOSE 9000
+# ✅ Download OpenTelemetry Java Agent at build time
+ADD https://github.com/open-telemetry/opentelemetry-java-instrumentation/releases/latest/download/opentelemetry-javaagent.jar /app/opentelemetry-javaagent.jar
 
-# Start the application (OTEL will be injected via Kubernetes)
-ENTRYPOINT ["java", "-jar", "app.jar"]
+# ✅ Start application WITH OpenTelemetry
+ENTRYPOINT ["java","-javaagent:/app/opentelemetry-javaagent.jar","-jar","/app/employee-index.jar"]
