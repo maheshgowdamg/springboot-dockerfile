@@ -24,47 +24,31 @@
 
     <dependencies>
 
-        <!-- ========================= -->
-        <!-- SPRING WEB + THYMELEAF -->
-        <!-- ========================= -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-thymeleaf</artifactId>
-        </dependency>
-
+        <!-- WEB -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
-        <!-- ========================= -->
-        <!-- ACTUATOR (REQUIRED) -->
-        <!-- ========================= -->
+        <!-- THYMELEAF -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-thymeleaf</artifactId>
+        </dependency>
+
+        <!-- ✅ ACTUATOR (REQUIRED FOR METRICS) -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
 
-        <!-- ========================= -->
-        <!-- MICROMETER PROMETHEUS -->
-        <!-- ========================= -->
+        <!-- ✅ MICROMETER PROMETHEUS -->
         <dependency>
             <groupId>io.micrometer</groupId>
             <artifactId>micrometer-registry-prometheus</artifactId>
         </dependency>
 
-        <!-- ========================= -->
-        <!-- ✅ OPENTELEMETRY MICROMETER BRIDGE (FIXED VERSION) -->
-        <!-- ========================= -->
-        <dependency>
-            <groupId>io.opentelemetry.instrumentation</groupId>
-            <artifactId>opentelemetry-micrometer-1.5</artifactId>
-            <version>2.4.0</version>
-        </dependency>
-
-        <!-- ========================= -->
         <!-- DEVTOOLS -->
-        <!-- ========================= -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>
@@ -72,18 +56,14 @@
             <optional>true</optional>
         </dependency>
 
-        <!-- ========================= -->
         <!-- LOMBOK -->
-        <!-- ========================= -->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <optional>true</optional>
         </dependency>
 
-        <!-- ========================= -->
-        <!-- TESTING -->
-        <!-- ========================= -->
+        <!-- TEST -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
@@ -95,9 +75,6 @@
     <build>
         <plugins>
 
-            <!-- ========================= -->
-            <!-- COMPILER -->
-            <!-- ========================= -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -111,9 +88,6 @@
                 </configuration>
             </plugin>
 
-            <!-- ========================= -->
-            <!-- SPRING BOOT -->
-            <!-- ========================= -->
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
