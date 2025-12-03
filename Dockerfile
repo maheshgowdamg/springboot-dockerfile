@@ -11,3 +11,5 @@ EXPOSE 9000
 # ✅ Start application NORMALLY (agent will be attached via JAVA_TOOL_OPTIONS)
 ENTRYPOINT ["java","-jar","/app/employee-index.jar"]
 
+# ✅ IMPORTANT: Start Java WITH JAVA_TOOL_OPTIONS support
+#ENTRYPOINT ["sh","-c","exec java $JAVA_TOOL_OPTIONS -jar /app/employee-index.jar"]
